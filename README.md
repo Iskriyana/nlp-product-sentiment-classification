@@ -28,7 +28,7 @@ The purpose of this project is to develop a model to accurately classify various
 ## Getting Started
 
 1. Clone this repo (for help see this [tutorial](https://help.github.com/articles/cloning-a-repository/)).
-2. `conda create -n nlp-sent`
+2. `conda create -n nlp-sent python=3.6`
 3. `conda activate nlp-sent`
 4. `pip install -r requirements.txt`
 5. (wip) Raw Data is being kept [here](Repo folder containing raw data) within this repo.
