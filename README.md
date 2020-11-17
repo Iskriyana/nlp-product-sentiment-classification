@@ -2,7 +2,7 @@
 
 <img class="irc_mi" src="https://inudgeyou.com/wp-content/uploads/2019/03/p%C3%A6re1.jpg" data-atf="0" width="400" height="300" style=""/></a>
 
-#### -- Project Status: [WiP]
+## -- Project Status: [WiP]
 
 ## Project Intro
 The purpose of this project is to develop a model to accurately classify various products into 4 different classes of sentiments based on the raw text review provided by the user.
