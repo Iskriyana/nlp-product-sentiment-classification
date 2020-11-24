@@ -1,8 +1,11 @@
 contractions==0.0.25
+cufflinks==0.17.3
+imbalanced-learn==0.7.0
 keras==2.4.3
 nltk==3.5
 numpy==1.19.2
 pandas==1.1.3
+plotly==4.13.0
 progressbar==2.5
 seaborn==0.11.0
 spacy==2.3.2
