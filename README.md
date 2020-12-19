@@ -1,8 +1,9 @@
 # nlp-product-sentiment-classification
 
 <img class="irc_mi" src="https://inudgeyou.com/wp-content/uploads/2019/03/p%C3%A6re1.jpg" data-atf="0" width="400" height="300" style=""/></a>
+<img class="irc_mi" src="https://github.com/Iskriyana/nlp-product-sentiment-classification/blob/master/notebooks/01_exploration/text_star.png" data-atf="0" width="400" height="300" style=""/></a>
 
-## -- Project Status: done (for now ;) ) 
+## -- Project Status: done
 
 ## Project Intro
 The purpose of this project is to develop a model to classify various products into 4 different classes of sentiments based on the raw text description.
@@ -46,6 +47,13 @@ The purpose of this project is to develop a model to classify various products i
 * [02_3_Multi_Input_Model](#notebooks/02_processing/02_3_Multi_Input_Model.ipynb)
 * wip [Blog Post](#)
 
+## Future Work or Actions to Further Improve the Model
+* more data
+* more hyperparameter tunning  - hidden units, batch size etc. 
+* test the model performance without very specific words such as  'sxsw'
+* try without one-hot encoding of the labels
+* migrate from notebooks to scripts
+* use optimal epoch
 ---
 
 This file structure is based on the [DSSG machine learning pipeline](https://github.com/dssg/hitchhikers-guide/tree/master/sources/curriculum/0_before_you_start/pipelines-and-project-workflow).
