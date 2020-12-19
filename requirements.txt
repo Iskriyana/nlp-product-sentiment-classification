@@ -10,7 +10,7 @@ progressbar==2.5
 seaborn==0.11.0
 sklearn==0.23.2
 spacy==2.3.2
-tensorflow==2.3.1
+tensorflow==2.4.0
 wordcloud==1.8.1
 #glob2>=0.6
 #functools
