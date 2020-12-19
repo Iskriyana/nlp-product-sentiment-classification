@@ -34,9 +34,8 @@ The purpose of this project is to develop a model to classify various products i
 2. `conda create -n nlp-sent python=3.6`
 3. `conda activate nlp-sent`
 4. `pip install -r requirements.txt`
-5. (wip) Raw Data is being kept [here](Repo folder containing raw data) within this repo.
-6. (wip) Data processing/transformation scripts are being kept [here](Repo folder containing data processing scripts/notebooks)
-7. (wip) Follow setup [instructions](Link to file)
+5. Raw Data is being kept [here](https://github.com/Iskriyana/nlp-product-sentiment-classification/tree/master/data/01_raw) within this repo.
+6. Data processing/transformation scripts are being kept [here](https://github.com/Iskriyana/nlp-product-sentiment-classification/tree/master/notebooks/02_processing)
 
 ## Featured Notebooks/Analysis/Deliverables
 * [01_1_Data_Exploration](https://github.com/Iskriyana/nlp-product-sentiment-classification/blob/master/notebooks/01_exploration/01_1_Data_Exploration.ipynb)
