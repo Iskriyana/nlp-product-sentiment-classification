@@ -2,10 +2,10 @@
 
 <img class="irc_mi" src="https://inudgeyou.com/wp-content/uploads/2019/03/p%C3%A6re1.jpg" data-atf="0" width="400" height="300" style=""/></a>
 
-## -- Project Status: [WiP]
+## -- Project Status: done (for now ;) ) 
 
 ## Project Intro
-The purpose of this project is to develop a model to accurately classify various products into 4 different classes of sentiments based on the raw text review provided by the user.
+The purpose of this project is to develop a model to classify various products into 4 different classes of sentiments based on the raw text description.
 
 
 ### Collaborators
@@ -14,11 +14,14 @@ The purpose of this project is to develop a model to accurately classify various
 |Iskriyana Vasileva | [iskriyana](https://github.com/Iskriyana) |
 
 ### Methods Used
-* Word Embeddings
-* Transfer Learning
+* small data set --> cross-validation 
+* imbalanced data set --> oversampling with SMOTE
+* text and non-text data --> multi-input neural network
+* use of pre-trained word embeddings
 
 ### Technologies
 * Python
+* Jupyter Lab
 * PyCharm
 
 ## Project Description
@@ -35,10 +38,13 @@ The purpose of this project is to develop a model to accurately classify various
 6. (wip) Data processing/transformation scripts are being kept [here](Repo folder containing data processing scripts/notebooks)
 7. (wip) Follow setup [instructions](Link to file)
 
-## (wip) Featured Notebooks/Analysis/Deliverables
-* [Notebook/Markdown/Slide Deck Title](#)
-* [Notebook/Markdown/Slide DeckTitle](#)
-* [Blog Post](#)
+## Featured Notebooks/Analysis/Deliverables
+* [01_1_Data_Exploration](#notebooks/01_exploration/01_1_Data_Exploration.ipynb)
+* [02_1_Text_Preprocessing_with_TF](#notebooks/02_processing/02_1_Text_Preprocessing_with_TF.ipynb)
+* [02_2_NLP_Model_Choice_Optimisation](#notebooks/02_processing/02_2_NLP_Model_Choice_Optimisation.ipynb)
+* [02_2_Product_Type_Model](#notebooks/02_processing/02_2_Product_Type_Model.ipynb)
+* [02_3_Multi_Input_Model](#notebooks/02_processing/02_3_Multi_Input_Model.ipynb)
+* wip [Blog Post](#)
 
 ---
 

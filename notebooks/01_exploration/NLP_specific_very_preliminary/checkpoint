@@ -1,0 +1,2 @@
+model_checkpoint_path: "product_descr_TF.h5_transf"
+all_model_checkpoint_paths: "product_descr_TF.h5_transf"
