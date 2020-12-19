@@ -1,7 +1,6 @@
 # nlp-product-sentiment-classification
 
-<img class="irc_mi" src="https://inudgeyou.com/wp-content/uploads/2019/03/p%C3%A6re1.jpg" data-atf="0" width="400" height="300" style=""/></a>
-<img class="irc_mi" src="https://github.com/Iskriyana/nlp-product-sentiment-classification/blob/master/notebooks/01_exploration/text_star.png" data-atf="0" width="400" height="300" style=""/></a>
+<img class="irc_mi" src="https://github.com/Iskriyana/nlp-product-sentiment-classification/blob/master/notebooks/01_exploration/text_star.png" data-atf="0" width="200" height="200" style=""/></a>
 
 ## -- Project Status: done
 
