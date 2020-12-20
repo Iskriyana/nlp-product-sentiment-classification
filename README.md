@@ -3,7 +3,6 @@
 <img class="irc_mi" src="https://github.com/Iskriyana/nlp-product-sentiment-classification/blob/master/notebooks/01_exploration/text_star.png" data-atf="0" width="500" height="500" align="center" style=""/></a>
 
 ## Project Description
-* The project uses this Kaggle dataset: https://www.kaggle.com/akash14/product-sentiment-classification
 * The purpose is to develop a model to classify various products into 4 different classes of sentiments based on the text description and the product type.
 * Below is an example of the data where:
     * Inputs are: 
@@ -14,6 +13,7 @@
         * 1 - negative
         * 2 - positive
         * 3 - no sentiment
+* The project uses this [Kaggle dataset](https://www.kaggle.com/akash14/product-sentiment-classification)
         
 |Product_Description |Product_Type |Sentiment|
 |---|---|---|
@@ -53,26 +53,33 @@ The above issues were addressed as follows:
 6. Data processing/transformation scripts are being kept [here](https://github.com/Iskriyana/nlp-product-sentiment-classification/tree/master/notebooks/02_processing)
 
 ## Featured Notebooks 
-1. [Exploratory Data Analysis](https://github.com/Iskriyana/nlp-product-sentiment-classification/blob/master/notebooks/01_exploration/01_1_Data_Exploration.ipynb) - this step made clear that the data set at hand is small and imbalanced. By doing word clouds per product type, one could had a decent guess of what the products might have been (Google phone, iPad, iPhone etc.) 
+#### [Exploratory Data Analysis](https://github.com/Iskriyana/nlp-product-sentiment-classification/blob/master/notebooks/01_exploration/01_1_Data_Exploration.ipynb)
+This step made clear that the data set at hand is small and imbalanced. By doing word clouds per product type, one could had a decent guess of what the products might have been (Google phone, iPad, iPhone etc.) 
 
 <img class="irc_mi" src="https://github.com/Iskriyana/nlp-product-sentiment-classification/blob/master/notebooks/01_exploration/wordclouds_per_product_type.png" data-atf="0" width="500" height="300 " style=""/></a>
 
-2. [Text Processing and Tokenisation with Tensorflow](https://github.com/Iskriyana/nlp-product-sentiment-classification/blob/master/notebooks/02_processing/02_1_Text_Preprocessing_with_TF.ipynb) - in this notebook the text was "normalised", i.e. stopwords were removed, contractions expanded, the text was lemmatised, special characters removed and finaly the text was turned into sequences of indexes via the Tensorflow Tokenizer. 
-3. Model Development - it included 3 phases. In the first 2 the models for the text and non-text inputs were chosen and optimised accordingly. In the last 3rd part they were brought together in a multi-input neural network, using the Keras Model API 
-    1. [NLP Model](https://github.com/Iskriyana/nlp-product-sentiment-classification/blob/master/notebooks/02_processing/02_2_NLP_Model_Choice_Optimisation.ipynb) - 
-        * the goal of this notebook was to identify the best models in terms of F1 score on the training and validation data for the **text** part of the data
-        * The following models were evaluated: 
-            * bag-of-words
-            * a fully connected NN with "homegrown" embeddings layer
-            * a fully connected NN with pre-trained embeddings layer
-            * a "homegrown" embeddings layer with LSTM 
-            * a pre-trained embeddings layer with LSTM
-            * a "homegrown" embeddings layer with Conv1D 
-            * a pre-trained embeddings layer with Conv1D
-        * the top 2 models were then regularised in order for them to generalise better on unseen data
-        * at the end the best performing model with regularisation on the test data was the bag-of-words with both l2 & dropout
-    2. [Product Type Model](https://github.com/Iskriyana/nlp-product-sentiment-classification/blob/master/notebooks/02_processing/02_2_Product_Type_Model.ipynb) - a simple fully connected neural network was used for this part
-    3. [Multi-Input Model](https://github.com/Iskriyana/nlp-product-sentiment-classification/blob/master/notebooks/02_processing/02_3_Multi_Input_Model.ipynb) - the two models above were put together into a multi-input model
+#### [Text Processing and Tokenisation with Tensorflow](https://github.com/Iskriyana/nlp-product-sentiment-classification/blob/master/notebooks/02_processing/02_1_Text_Preprocessing_with_TF.ipynb)
+In this notebook the text was "normalised", i.e. stopwords were removed, contractions expanded, the text was lemmatised, special characters removed and finaly the text was turned into sequences of indexes via the Tensorflow Tokenizer. 
+
+#### Model Development
+It included 3 phases. In the first 2 the models for the text and non-text inputs were chosen and optimised accordingly. In the last 3rd part they were brought together in a multi-input neural network, using the Keras Model API 
+
+[NLP Model](https://github.com/Iskriyana/nlp-product-sentiment-classification/blob/master/notebooks/02_processing/02_2_NLP_Model_Choice_Optimisation.ipynb)
+* the goal of this notebook was to identify the best models in terms of F1 score on the training and validation data for the **text** part of the data
+* The following models were evaluated: 
+    * bag-of-words
+    * a fully connected NN with "homegrown" embeddings layer
+    * a fully connected NN with pre-trained embeddings layer
+    * a "homegrown" embeddings layer with LSTM 
+    * a pre-trained embeddings layer with LSTM
+    * a "homegrown" embeddings layer with Conv1D 
+    * a pre-trained embeddings layer with Conv1D
+* the top 2 models were then regularised in order for them to generalise better on unseen data
+* at the end the best performing model with regularisation on the test data was the bag-of-words with both l2 & dropout
+
+[Product Type Model](https://github.com/Iskriyana/nlp-product-sentiment-classification/blob/master/notebooks/02_processing/02_2_Product_Type_Model.ipynb) - a simple fully connected neural network was used for this part
+
+[Multi-Input Model](https://github.com/Iskriyana/nlp-product-sentiment-classification/blob/master/notebooks/02_processing/02_3_Multi_Input_Model.ipynb) - the two models above were put together into a multi-input model
 
 ## Results
 * The baseline model used was sklearn's DummyClassifier, which predicts the majority class. It achieves an F1 of 19%. 
