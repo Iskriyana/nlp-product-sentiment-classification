@@ -95,13 +95,15 @@ It included 3 phases. In the first 2 the models for the text and non-text inputs
 
 #### Non-Text Part 
 * The Model achieves 72% F1 on test data 
-* This is most probably due to the fact that there is only one feature and little data
-* Therefore, it was picked to be used in the multi-input model
+* This is not a very good result and is to be explained mostly by the fact that there is only one feature and little data
+* However, it is still much better than the baseline model
+* Therefore, the model was picked to be used in the multi-input model
 
 #### Multi-Input Model
 * A F1-score of 64% was achieved on the test data.
 * Furthermore the graphs visualising the training and validation loss show that it generalises well - no significant gap between them
-* The results on the final test set show a room for improvement.
+* The results on the final test set show a room for improvement. 
+* Given all the limitations, however, it is still a good enough performance (and better than the baseline)
 
 ## Next Steps to Improve the Model 
 * More data - especially for the text part, mode data will improve the model by adding more variability
