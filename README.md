@@ -1,6 +1,6 @@
 # Product Sentiment Classification (NLP)
 
-<img class="irc_mi" src="https://github.com/Iskriyana/nlp-product-sentiment-classification/blob/master/notebooks/01_exploration/text_star.png" data-atf="0" width="500" height="500 align:center" style=""/></a>
+<img class="irc_mi" src="https://github.com/Iskriyana/nlp-product-sentiment-classification/blob/master/notebooks/01_exploration/text_star.png" data-atf="0" width="500" height="500" align="center" style=""/></a>
 
 ## Project Description
 * The project uses this Kaggle dataset: https://www.kaggle.com/akash14/product-sentiment-classification
