@@ -1,32 +1,47 @@
-# nlp-product-sentiment-classification
+# Product Sentiment Classification (NLP)
 
-<img class="irc_mi" src="https://github.com/Iskriyana/nlp-product-sentiment-classification/blob/master/notebooks/01_exploration/text_star.png" data-atf="0" width="300" height="300" style=""/></a>
-
-## Project Status: done
-
-## Project Intro
-The purpose of this project is to develop a model to classify various products into 4 different classes of sentiments based on the raw text description.
-
-
-### Collaborators
-|Name               |  Github Page                              |  Personal Website  |
-|-------------------|-------------------------------------------|--------------------|
-|Iskriyana Vasileva | [iskriyana](https://github.com/Iskriyana) |
-
-### Methods Used
-* small data set --> cross-validation 
-* imbalanced data set --> oversampling with SMOTE
-* text and non-text data --> multi-input neural network
-* use of pre-trained word embeddings
-
-### Technologies
-* Python
-* Jupyter Lab
-* PyCharm
+<img class="irc_mi" src="https://github.com/Iskriyana/nlp-product-sentiment-classification/blob/master/notebooks/01_exploration/text_star.png" data-atf="0" width="500" height="500 align:center" style=""/></a>
 
 ## Project Description
-* The project is based on this Kaggle's dataset: https://www.kaggle.com/akash14/product-sentiment-classification
+* The project uses this Kaggle dataset: https://www.kaggle.com/akash14/product-sentiment-classification
+* The purpose is to develop a model to classify various products into 4 different classes of sentiments based on the text description and the product type.
+* Below is an example of the data where:
+    * Inputs are: 
+        * product_description = text part 
+        * product_type = non-text part
+    * The target is the sentiment
+        * 0 - cannot say
+        * 1 - negative
+        * 2 - positive
+        * 3 - no sentiment
+        
+|Product_Description |Product_Type |Sentiment|
+|---|---|---|
+|3057 |The Web DesignerÛªs Guide to iOS (and Android) Apps, today @mention 10 a.m! {link} #sxsw |9 |2 |
+|6254 |RT @mention Line for iPad 2 is longer today than yesterday. #SXSW  // are you getting in line again today just for fun? |9 |2 |
+|8212 | Crazy that Apple is opening a temporary store in Austin tomorrow to handle the rabid #sxsw eye pad too seekers          |9 |2 |
 
+
+### Methods Used
+The challenges of this project were: 
+* small data set - there are only 6364 data entries. This is challenging primarily for the text part, for which I wanted to use a deep learning model.
+* imbalanced data set - almost 60% of the entries are classified as 2 (positive) and 33% as 3 (did not have a sentiment). 
+* text and non-text data - the dataset at hand has two types of input data - text and non-text. As a result it requires multimodal inputs. 
+
+The above issues were addressed as follows: 
+* k-fold cross-validation (sklearn .model_selection KFold) was used as a first method to tackle the small data set. It ensured that every observation from the original dataset has the chance of appearing in the training and test set. 
+* while searching for the optimal model, pre-trained embeddings ([GloVe](https://nlp.stanford.edu/projects/glove/)) were tried. This was done in an attempt to add more variability to the text part. However, due to the specific nature of the descriptions they were too general and the models trained with them did not perform better than a model with "homegrown" embeddings or bag-of-words.
+* the imbalanced data was tackled with oversampling using SMOTE (Synthetic Minority Oversampling Technique). The synthetic increase of the minority classes contributed once more to tackling the small data set. 
+* the two types of data were addressed by using different types of neural layers to address the "needs" of the 2 types separately. They were then united in one single model in order to "jointly learn" by seeing all input information simultaneously. In order to do this, I used the Keras (Model API). 
+ 
+ 
+### Tech Stack 
+* Python main libraries
+    * Pandas, NumPy
+    * Tensorflow, Keras
+* Jupyter Lab
+* PyCharm
+* Github - the file structure is based on the pipeline and project workflow template of  [DSSG](https://github.com/dssg/hitchhikers-guide/tree/master/sources/curriculum/0_before_you_start/pipelines-and-project-workflow). 
 
 ## Getting Started
 
@@ -37,20 +52,58 @@ The purpose of this project is to develop a model to classify various products i
 5. Raw Data is being kept [here](https://github.com/Iskriyana/nlp-product-sentiment-classification/tree/master/data/01_raw) within this repo.
 6. Data processing/transformation scripts are being kept [here](https://github.com/Iskriyana/nlp-product-sentiment-classification/tree/master/notebooks/02_processing)
 
-## Featured Notebooks/Analysis/Deliverables
-* [01_1_Data_Exploration](https://github.com/Iskriyana/nlp-product-sentiment-classification/blob/master/notebooks/01_exploration/01_1_Data_Exploration.ipynb)
-* [02_1_Text_Preprocessing_with_TF](https://github.com/Iskriyana/nlp-product-sentiment-classification/blob/master/notebooks/02_processing/02_1_Text_Preprocessing_with_TF.ipynb)
-* [02_2_NLP_Model_Choice_Optimisation](https://github.com/Iskriyana/nlp-product-sentiment-classification/blob/master/notebooks/02_processing/02_2_NLP_Model_Choice_Optimisation.ipynb)
-* [02_2_Product_Type_Model](https://github.com/Iskriyana/nlp-product-sentiment-classification/blob/master/notebooks/02_processing/02_2_Product_Type_Model.ipynb)
-* [02_3_Multi_Input_Model](https://github.com/Iskriyana/nlp-product-sentiment-classification/blob/master/notebooks/02_processing/02_3_Multi_Input_Model.ipynb)
+## Featured Notebooks
+Once the data was ready, I started testing different models for the text part in order to find the otpimal one. 
+1. [Exploratory Data Analysis](https://github.com/Iskriyana/nlp-product-sentiment-classification/blob/master/notebooks/01_exploration/01_1_Data_Exploration.ipynb) - this step made clear that the data set at hand is small and imbalanced. By doing word clouds per product type, one could had a decent guess of what the products might have been (Google phone, iPad, iPhone etc.) 
+<img class="irc_mi" src="https://github.com/Iskriyana/nlp-product-sentiment-classification/blob/master/notebooks/01_exploration/wordclouds_per_product_type.png" data-atf="0" width="300" height="300 " style=""/></a>
+2. [Text Processing and Tokenisation with Tensorflow](https://github.com/Iskriyana/nlp-product-sentiment-classification/blob/master/notebooks/02_processing/02_1_Text_Preprocessing_with_TF.ipynb) - in this notebook the text was "normalised", i.e. stopwords were removed, contractions expanded, the text was lemmatised, special characters removed and finaly the text was turned into sequences of indexes via the Tensorflow Tokenizer. 
+3. Model Development - it included 3 phases. In the first 2 the models for the text and non-text inputs were separately chosen and optimised. In the last 3rd part they were brought together in the multi.input neural network, using the Keras Model API 
+    1. [NLP Model](https://github.com/Iskriyana/nlp-product-sentiment-classification/blob/master/notebooks/02_processing/02_2_NLP_Model_Choice_Optimisation.ipynb) - 
+        * the goal of this notebook was to identify the best models in terms of F1 score on the training and validation data for the **text** part of the data
+        * F1 was chosen, as the data set at hand is imbalanced. 
+        * The following models were evaluated: 
+            * bag-of-words
+            * a fully connected NN with "homegrown" embeddings layer
+            * a fully connected NN with pre-trained embeddings layer
+            * a "homegrown" embeddings layer with LSTM 
+            * a pre-trained embeddings layer with LSTM
+            * a "homegrown" embeddings layer with Conv1D 
+            * a pre-trained embeddings layer with Conv1D
+        * the top 2 models were then regularised in order for them to generalise better on unseen data
+        * at the end the best performing model with regularisation on the test data was the bag-of-words with both l2 & dropout
+    2. [Product Type Model](https://github.com/Iskriyana/nlp-product-sentiment-classification/blob/master/notebooks/02_processing/02_2_Product_Type_Model.ipynb) - a simple fully connected neural network was used for this part
+    3. [Multi-Input Model](https://github.com/Iskriyana/nlp-product-sentiment-classification/blob/master/notebooks/02_processing/02_3_Multi_Input_Model.ipynb) - the two models above were put together into a multi-input model
 
-## Future Work or Actions to Further Improve the Model
-* more data
-* more hyperparameter tunning  - hidden units, batch size etc. 
-* test the model performance without very specific words such as  'sxsw'
-* try without one-hot encoding of the labels
-* migrate from notebooks to scripts
-* use optimal epoch
+## Results
+* The baseline model used was sklearn's DummyClassifier, which predicts the majority class. It achieves an F1 of 19%. 
+* The main metric was the F1-score due to the imbalanced nature of the data set. 
+
+#### Text Part (NLP)
+* The bag-of-words with both l2 regularisation and dropout turned out to be the best model when it comes to F1 62% on the test data.
+* My expectations were that a model with pre-trained embeddings in combination with an LSTM or Conv1D will outperform the rest. 
+* My reasoning was that the pre-trained embeddings will enforce the generalisation while an LSTM or Conv1D will help capture the text sequence. 
+* However, it turned out: 
+    * that "homegrown" embeddings are better than pre-trained. This can be explained by the small amount of data and the tech concentrated nature of the text descriptions. These "specificities" were better captured by training the data's own embeddings (that is why also "homegrown"). 
+    * that bag-of-words is better than any model with embeddings. This for me was the biggest surprise. After a discussion with a mentor of mine an explanation can be that due to the short length of the text descriptions and relatively "loose" way of writing them, semantics and text structure do not play a significant role. Much more important is, if a word is present, which is what bag-of-words captures. 
+
+#### Non-Text Part 
+* The Model achieves 72% F1 on test data 
+* This is most probably due to the fact that there is only one feature and little data
+* However, it still performed better than the baseline model in terms of val_accuracy and val_f1
+* Therefore, it was picked to be used in the multi-input model
+
+#### Multi-Input Model
+* A F1-score of 64% was achieved on the test data.
+* Furthermore the graphs visualising the training and validation loss show that it generalises well - no significant gap between them
+* The results on the final test set show a room for improvement.
+
+## Next Steps to Improve the Model 
+* More data - especially for the text part, mode data will improve the model by adding more variability
+* Adding new non-text features - additional information such as OS version, product model etc. will also enhance the performance of the non-text model
+* More hyperparameter tunning  - by both models more tests can be performed in order to find the best set of hyperparameters hidden units, batch size etc. One can also take a look at automatic hyperparameter tuning techniques.  
+* Test the model performance without very specific words such as  'sxsw' - among the most frequent words is the abbreviation sxsw. According to wikipedia it is an annual conglomeration of parallel film, interactive media, and music festivals and conferences [wikipedia article](https://en.wikipedia.org/wiki/South_by_Southwest). Due to the technical theme of the descriptions, I left the word. The same also for x89 (a tablet model). It would be interesting to test the impact of such specific words on the performance of the models. 
+* Try without one-hot encoding of the labels - the labels are currently one-hot encoded. However, as they indicate a preference or the lack thereof, one can test how their unprocessed use would impact the model performance. 
+* Use early stopping - while training, one can try the impact of stopping the training at the optimal epoch, i.e. where the loss is at its lowest. 
 ---
 
-This file structure is based on the [DSSG machine learning pipeline](https://github.com/dssg/hitchhikers-guide/tree/master/sources/curriculum/0_before_you_start/pipelines-and-project-workflow).
+
