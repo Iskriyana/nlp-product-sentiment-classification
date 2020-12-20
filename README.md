@@ -1,6 +1,6 @@
 # Product Sentiment Classification (NLP)
 
-<img class="irc_mi" src="https://github.com/Iskriyana/nlp-product-sentiment-classification/blob/master/notebooks/01_exploration/text_star.png" data-atf="0" width="400" height="400" align="center" style=""/></a>
+<img class="irc_mi" src="https://github.com/Iskriyana/nlp-product-sentiment-classification/blob/master/notebooks/01_exploration/text_star.png" data-atf="0" width="400" height="400" align="centre" style=""/></a>
 
 ## Project Description
 * The purpose is to develop a model to classify various products into 4 different classes of sentiments based on the text description and the product type.
