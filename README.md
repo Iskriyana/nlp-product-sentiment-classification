@@ -2,7 +2,7 @@
 
 <img class="irc_mi" src="https://github.com/Iskriyana/nlp-product-sentiment-classification/blob/master/notebooks/01_exploration/text_star.png" data-atf="0" width="300" height="300" style=""/></a>
 
-## -- Project Status: done
+## Project Status: done
 
 ## Project Intro
 The purpose of this project is to develop a model to classify various products into 4 different classes of sentiments based on the raw text description.
@@ -43,7 +43,6 @@ The purpose of this project is to develop a model to classify various products i
 * [02_2_NLP_Model_Choice_Optimisation](https://github.com/Iskriyana/nlp-product-sentiment-classification/blob/master/notebooks/02_processing/02_2_NLP_Model_Choice_Optimisation.ipynb)
 * [02_2_Product_Type_Model](https://github.com/Iskriyana/nlp-product-sentiment-classification/blob/master/notebooks/02_processing/02_2_Product_Type_Model.ipynb)
 * [02_3_Multi_Input_Model](https://github.com/Iskriyana/nlp-product-sentiment-classification/blob/master/notebooks/02_processing/02_3_Multi_Input_Model.ipynb)
-* wip [Blog Post](#)
 
 ## Future Work or Actions to Further Improve the Model
 * more data
