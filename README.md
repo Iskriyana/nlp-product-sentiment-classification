@@ -106,10 +106,10 @@ It included 3 phases. In the first 2 the models for the text and non-text inputs
 * Given all the limitations, however, it is still a good enough performance (and better than the baseline)
 
 ## Next Steps to Improve the Model 
-* More data - especially for the text part, mode data will improve the model by adding more variability
+* More data - especially for the text part, more data will improve the model by adding more variability
 * Adding new non-text features - additional information such as OS version, product model etc. will also enhance the performance of the non-text model
 * More hyperparameter tunning  - by both models more tests can be performed in order to find the best set of hyperparameters hidden units, batch size etc. One can also take a look at automatic hyperparameter tuning techniques.  
-* Test the model performance without very specific words such as  'sxsw' - among the most frequent words is the abbreviation sxsw. According to wikipedia it is an annual conglomeration of parallel film, interactive media, and music festivals and conferences [wikipedia article](https://en.wikipedia.org/wiki/South_by_Southwest). Due to the technical theme of the descriptions, I left the word. The same also for x89 (a tablet model). It would be interesting to test the impact of such specific words on the performance of the models. 
+* Test the model performance without very specific words such as  'sxsw' - among the most frequent words is the abbreviation sxsw. According to wikipedia it is "an annual conglomeration of parallel film, interactive media, and music festivals and conferences" ([wikipedia article](https://en.wikipedia.org/wiki/South_by_Southwest)). Due to the technical theme of the descriptions, I left the word. The same also for x89 (a tablet model). It would be interesting to test the impact of such specific words on the performance of the models. 
 * Try without one-hot encoding of the labels - the labels are currently one-hot encoded. However, as they indicate a preference or the lack thereof, one can test how their unprocessed use would impact the model performance. 
 * Use early stopping - while training, one can try the impact of stopping the training at the optimal epoch, i.e. where the loss is at its lowest. 
 ---
