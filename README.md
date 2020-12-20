@@ -24,15 +24,15 @@
 
 ### Methods Used
 The challenges of this project were: 
-* small data set - there are only 6364 data entries. This is challenging primarily for the text part, for which I wanted to use a deep learning model.
-* imbalanced data set - almost 60% of the entries are classified as 2 (positive) and 33% as 3 (did not have a sentiment). 
-* text and non-text data - the dataset at hand has two types of input data - text and non-text. As a result it requires multimodal inputs. 
+* Small data set - there are only 6364 data entries. This is challenging primarily for the text part, for which I wanted to use a deep learning model.
+* Imbalanced data set - almost 60% of the entries are classified as 2 (positive) and 33% as 3 (did not have a sentiment). 
+* Text and non-text data - the dataset at hand has two types of input data - text and non-text. As a result it requires multimodal inputs. 
 
 The above issues were addressed as follows: 
-* k-fold cross-validation (sklearn .model_selection KFold) was used as a first method to tackle the small data set. It ensured that every observation from the original dataset has the chance of appearing in the training and test set. 
-* while searching for the optimal model, pre-trained embeddings ([GloVe](https://nlp.stanford.edu/projects/glove/)) were tried. This was done in an attempt to add more variability to the text part. However, due to the specific nature of the descriptions they were too general and the models trained with them did not perform better than a model with "homegrown" embeddings or bag-of-words.
-* the imbalanced data was tackled with oversampling using SMOTE (Synthetic Minority Oversampling Technique). The synthetic increase of the minority classes contributed once more to tackling the small data set. 
-* the two types of data were addressed by using different types of neural layers to address the "needs" of the 2 types separately. They were then united in one single model in order to "jointly learn" by seeing all input information simultaneously. In order to do this, I used the Keras (Model API). 
+* K-fold cross-validation (sklearn.model_selection KFold) was used as a first method to tackle the small data set. It ensured that every observation from the original dataset has the chance of appearing in the training and test set. 
+* While searching for the optimal model, pre-trained embeddings ([GloVe](https://nlp.stanford.edu/projects/glove/)) were tried. This was done in an attempt to add more variability to the text part. However, due to the specific nature of the descriptions they were too general and the models trained with them did not perform better than a model with "homegrown" embeddings or bag-of-words.
+* The imbalanced data was tackled with oversampling using SMOTE (Synthetic Minority Oversampling Technique). The synthetic increase of the minority classes contributed once more to tackling the small data set. 
+* The two types of data were addressed by using different types of neural layers to address the "needs" of the 2 types separately. They were then united in one single model in order to "jointly learn" by seeing all input information simultaneously. In order to do this, I used the Keras (Model API). 
  
  
 ### Tech Stack 
@@ -52,15 +52,15 @@ The above issues were addressed as follows:
 5. Raw Data is being kept [here](https://github.com/Iskriyana/nlp-product-sentiment-classification/tree/master/data/01_raw) within this repo.
 6. Data processing/transformation scripts are being kept [here](https://github.com/Iskriyana/nlp-product-sentiment-classification/tree/master/notebooks/02_processing)
 
-## Featured Notebooks
-Once the data was ready, I started testing different models for the text part in order to find the otpimal one. 
+## Featured Notebooks 
 1. [Exploratory Data Analysis](https://github.com/Iskriyana/nlp-product-sentiment-classification/blob/master/notebooks/01_exploration/01_1_Data_Exploration.ipynb) - this step made clear that the data set at hand is small and imbalanced. By doing word clouds per product type, one could had a decent guess of what the products might have been (Google phone, iPad, iPhone etc.) 
-<img class="irc_mi" src="https://github.com/Iskriyana/nlp-product-sentiment-classification/blob/master/notebooks/01_exploration/wordclouds_per_product_type.png" data-atf="0" width="300" height="300 " style=""/></a>
+
+<img class="irc_mi" src="https://github.com/Iskriyana/nlp-product-sentiment-classification/blob/master/notebooks/01_exploration/wordclouds_per_product_type.png" data-atf="0" width="500" height="300 " style=""/></a>
+
 2. [Text Processing and Tokenisation with Tensorflow](https://github.com/Iskriyana/nlp-product-sentiment-classification/blob/master/notebooks/02_processing/02_1_Text_Preprocessing_with_TF.ipynb) - in this notebook the text was "normalised", i.e. stopwords were removed, contractions expanded, the text was lemmatised, special characters removed and finaly the text was turned into sequences of indexes via the Tensorflow Tokenizer. 
-3. Model Development - it included 3 phases. In the first 2 the models for the text and non-text inputs were separately chosen and optimised. In the last 3rd part they were brought together in the multi.input neural network, using the Keras Model API 
+3. Model Development - it included 3 phases. In the first 2 the models for the text and non-text inputs were chosen and optimised accordingly. In the last 3rd part they were brought together in a multi-input neural network, using the Keras Model API 
     1. [NLP Model](https://github.com/Iskriyana/nlp-product-sentiment-classification/blob/master/notebooks/02_processing/02_2_NLP_Model_Choice_Optimisation.ipynb) - 
         * the goal of this notebook was to identify the best models in terms of F1 score on the training and validation data for the **text** part of the data
-        * F1 was chosen, as the data set at hand is imbalanced. 
         * The following models were evaluated: 
             * bag-of-words
             * a fully connected NN with "homegrown" embeddings layer
@@ -83,13 +83,12 @@ Once the data was ready, I started testing different models for the text part in
 * My expectations were that a model with pre-trained embeddings in combination with an LSTM or Conv1D will outperform the rest. 
 * My reasoning was that the pre-trained embeddings will enforce the generalisation while an LSTM or Conv1D will help capture the text sequence. 
 * However, it turned out: 
-    * that "homegrown" embeddings are better than pre-trained. This can be explained by the small amount of data and the tech concentrated nature of the text descriptions. These "specificities" were better captured by training the data's own embeddings (that is why also "homegrown"). 
+    * that for this particular data set "homegrown" embeddings are better than pre-trained. This can be explained by the small amount of data and the tech concentrated nature of the text descriptions. These "specificities" were better captured by training the data's own embeddings (that is why also "homegrown"). 
     * that bag-of-words is better than any model with embeddings. This for me was the biggest surprise. After a discussion with a mentor of mine an explanation can be that due to the short length of the text descriptions and relatively "loose" way of writing them, semantics and text structure do not play a significant role. Much more important is, if a word is present, which is what bag-of-words captures. 
 
 #### Non-Text Part 
 * The Model achieves 72% F1 on test data 
 * This is most probably due to the fact that there is only one feature and little data
-* However, it still performed better than the baseline model in terms of val_accuracy and val_f1
 * Therefore, it was picked to be used in the multi-input model
 
 #### Multi-Input Model
