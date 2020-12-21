@@ -75,7 +75,7 @@ It included 3 phases. In the first 2 the models for the text and non-text inputs
     * a "homegrown" embeddings layer with Conv1D 
     * a pre-trained embeddings layer with Conv1D
 * the top 2 models were then regularised in order for them to generalise better on unseen data
-* at the end the best performing model with regularisation on the test data was the bag-of-words with both l2 & dropout
+* at the end the best performing model with regularisation was the bag-of-words with dropout
 
 [Product Type Model](https://github.com/Iskriyana/nlp-product-sentiment-classification/blob/master/notebooks/02_processing/02_2_Product_Type_Model.ipynb) - a simple fully connected neural network was used for this part
 
@@ -86,7 +86,7 @@ It included 3 phases. In the first 2 the models for the text and non-text inputs
 * The main metric was the F1-score due to the imbalanced nature of the data set. 
 
 #### Text Part (NLP)
-* The bag-of-words with both l2 regularisation and dropout turned out to be the best model when it comes to F1 62% on the test data.
+* The bag-of-words with dropout turned out to be the best model. It achieved 64% F1 score on the test data.
 * My expectations were that a model with pre-trained embeddings in combination with an LSTM or Conv1D will outperform the rest. 
 * My reasoning was that the pre-trained embeddings will enforce the generalisation while an LSTM or Conv1D will help capture the text sequence. 
 * However, it turned out: 
@@ -94,14 +94,13 @@ It included 3 phases. In the first 2 the models for the text and non-text inputs
     * that bag-of-words is better than any model with embeddings. This for me was the biggest surprise. After a discussion with a mentor of mine an explanation can be that due to the short length of the text descriptions and relatively "loose" way of writing them, semantics and text structure do not play a significant role. Much more important is, if a word is present, which is what bag-of-words captures. 
 
 #### Non-Text Part 
-* The Model achieves 72% F1 on test data 
+* The Model achieved 44% F1 on the test data 
 * This is not a very good result and is to be explained mostly by the fact that there is only one feature and little data
 * However, it is still much better than the baseline model
 * Therefore, the model was picked to be used in the multi-input model
 
 #### Multi-Input Model
-* A F1-score of 64% was achieved on the test data.
-* Furthermore the graphs visualising the training and validation loss show that it generalises well - no significant gap between them
+* A F1-score of 62% was achieved on the test data.
 * The results on the final test set show a room for improvement. 
 * Given all the limitations, however, it is still a good enough performance (and better than the baseline)
 
