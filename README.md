@@ -17,9 +17,9 @@
         
 |Product_Description |Product_Type |Sentiment|
 |---|---|---|
-|3057 |The Web DesignerÛªs Guide to iOS (and Android) Apps, today @mention 10 a.m! {link} #sxsw |9 |2 |
-|6254 |RT @mention Line for iPad 2 is longer today than yesterday. #SXSW  // are you getting in line again today just for fun? |9 |2 |
-|8212 | Crazy that Apple is opening a temporary store in Austin tomorrow to handle the rabid #sxsw eye pad too seekers          |9 |2 |
+|The Web DesignerÛªs Guide to iOS (and Android) Apps, today @mention 10 a.m! {link} #sxsw |9 |2 |
+|RT @mention Line for iPad 2 is longer today than yesterday. #SXSW  // are you getting in line again today just for fun? |9 |2 |
+|Crazy that Apple is opening a temporary store in Austin tomorrow to handle the rabid #sxsw eye pad too seekers          |9 |2 |
 
 
 ### Methods Used
